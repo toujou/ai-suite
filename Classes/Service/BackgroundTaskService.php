@@ -132,7 +132,7 @@ class BackgroundTaskService
                 $task['status'] = isset($fetchedStatusData[$task['uuid']]) > 0 ? $fetchedStatusData[$task['uuid']]['status'] : $task['status'];
                 $answer = isset($fetchedStatusData[$task['uuid']]) ? json_decode($fetchedStatusData[$task['uuid']]['answer'], true) : json_decode($task['answer'], true);
                 if(isset($answer['type']) && $answer['type'] === 'Metadata') {
-                    $task['metadataSuggestions'] = $answer['body']['metadataResult'];
+                    $task['metadataSuggestions'] = array_filter($answer['body']['metadataResult'], 'is_string');
                 }
                 if(isset($answer['type']) && $answer['type'] === 'Error') {
                     $task['error'] = $answer['body']['message'];
