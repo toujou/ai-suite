@@ -89,7 +89,7 @@ final class ModifyNewContentElementWizardItemsEventListener
             }
         }
 
-        $sortedWizardItems = $commonEntries + $aiSuiteEntries + $otherEntries;
+        $sortedWizardItems = $commonEntries  + $otherEntries + $aiSuiteEntries;
         $event->setWizardItems($sortedWizardItems);
     }
 }
