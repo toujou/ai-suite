@@ -20,7 +20,7 @@ class AiSysFileReferenceAlternative extends AbstractNode
         }
         try {
             $siteService = GeneralUtility::makeInstance(SiteService::class);
-            $pageUid = (int)$this->data['parentPageRow']['uid'];
+            $pageUid = (int) ($this->data['parentPageRow']['uid'] ?? 0);
             if(isset($this->data['parentPageRow']['l10n_parent'][0]) && (int)$this->data['parentPageRow']['l10n_parent'][0] > 0) {
                 $pageUid = (int)$this->data['parentPageRow']['l10n_parent'][0];
             }
