@@ -75,7 +75,7 @@ class MetadataService
         $absoluteImageUrl = Environment::getPublicPath() . $file->getPublicUrl();
 
         $type = pathinfo($absoluteImageUrl, PATHINFO_EXTENSION);
-        $data = file_get_contents($absoluteImageUrl);
+        $data = file_get_contents(rawurldecode($absoluteImageUrl));
         return 'data:image/' . $type . ';base64,' . base64_encode($data);
     }
 
